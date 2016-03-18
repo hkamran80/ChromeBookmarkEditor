@@ -12,6 +12,7 @@ class ChromeBookmarks(object):
 		self.path     = self.get()
 		self.json     = None
 		self.ids      = None
+		self.titles   = None
 		self.children = None
 		self.read()
 
@@ -31,7 +32,7 @@ class ChromeBookmarks(object):
 		self.json     = js
 		self.children = self.json['roots']['bookmark_bar']['children']
 		self.ids      = [int(bm['id']) for bm in self.children]
-		self.titles   = 
+		self.titles   = [bm['name'] for bm in self.children]
 
 	def add(self, title, url):
 		if title in self.titles:
