@@ -22,7 +22,12 @@ class ChromeBookmarks(object):
 			Expanded path to ~/Library/Application Support/Google/Chrome/Default/Bookmarks
 
 		"""
-		return os.path.expanduser('~/Library/Application Support/Google/Chrome/Default/Bookmarks')
+		path = os.path.expanduser('~/Library/Application Support/Google/Chrome/Default/Bookmarks')
+		if not os.path.isfile(plist_path):
+			print "Bookmarks file doesn't appear to exist."
+			print "Generating new Bookmarks file."
+			self.generate()
+		return path
 
 	def read(self):
 		with open(self.path, "r") as infile:
