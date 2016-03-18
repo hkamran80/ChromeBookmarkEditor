@@ -26,8 +26,41 @@ class ChromeBookmarks(object):
 		if not os.path.isfile(plist_path):
 			print "Bookmarks file doesn't appear to exist."
 			print "Generating new Bookmarks file."
-			self.generate()
+			self.generate(path)
 		return path
+
+	def generate(self, path):
+		contents = dict(
+			roots=dict(
+				bookmark_bar=dict(
+					children=list(),
+					date_added=self.epoch,
+					date_modified="0",
+					id="1",
+					name="Bookmarks Bar",
+					type="folder"
+				),
+				other=dict(
+					children=list(),
+					date_added=self.epoch,
+					date_modified="0",
+					id="2",
+					name="Other Bookmarks",
+					type="folder"
+				),
+				synced=dict(
+					children=list(),
+					date_added=self.epoch,
+					date_modified="0",
+					id="3",
+					name="Mobile Bookmarks",
+					type="folder"
+				)
+			),
+			version=1
+		)
+		with open(path, "w") as outfile:
+			json.dump(contents, outfile)
 
 	def read(self):
 		with open(self.path, "r") as infile:
