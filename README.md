@@ -1,4 +1,4 @@
-# FinderSidebarEditor
+# ChromeBookmarkEditor
 Python module for easily adding, removing, and moving bookmarks on the Chrome bookmark menu in the context of the logged in user.
 
 Example Usage:
