@@ -134,7 +134,3 @@ class ChromeBookmarks(object):
 		self.json.pop("checksum", None)
 		with open(self.path, "w") as outfile:
 			json.dump(self.json, outfile)
-
-
-
-
