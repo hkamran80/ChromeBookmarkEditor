@@ -30,12 +30,12 @@ class ChromeBookmarks(object):
 			js = json.load(infile)
 		self.json = js
 		self.children = self.json['roots']['bookmark_bar']['children']
-		self.ids = [bm['id'] for bm in self.children]
+		self.ids = [int(bm['id']) for bm in self.children]
 
 	def add(self, title, url):
 		new_child = dict(
 			date_added=self.epoch,
-			id=(max(self.ids) + 1),
+			id=str(max(self.ids) + 1),
 			name=title,
 			type="url",
 			url=url,
