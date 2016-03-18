@@ -34,9 +34,11 @@ class ChromeBookmarks(object):
 		self.ids      = [int(bm['id']) for bm in self.children]
 		self.titles   = [bm['name'] for bm in self.children]
 
-	def add(self, title, url, index=len(self.children)):
+	def add(self, title, url, index=-1):
 		if title in self.titles:
 			return
+		if index == -1 or index > len(self.children):
+			index = len(self.children)
 		next_id = max(self.ids) + 1
 		new_child = dict(
 			date_added=self.epoch,
@@ -59,9 +61,15 @@ class ChromeBookmarks(object):
 	def swap(self, title1, title2):
 		if (title1 not in self.titles) or (title2 not in self.titles) or (title1 == title2):
 			return
-		for child in self.children:
+		for index, child in enumerate(self.children):
 			if child['name'] == title1:
-				
+				index1 = index
+				child1 = child
+			if child['name'] == title2:
+				index2 = index
+				child2 = child
+		self.children[index1] = child2
+		self.children[index2] = child1
 
 	def write(self):
 		bak_file = self.path + ".bak"
