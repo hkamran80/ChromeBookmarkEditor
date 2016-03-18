@@ -52,6 +52,8 @@ class ChromeBookmarks(object):
 		self.titles.append(title)
 
 	def remove(self, title):
+		if title not in self.titles:
+			return
 		for child in reversed(self.children):
 			if child['name'] == title:
 				self.ids.remove(int(child['id']))
