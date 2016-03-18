@@ -12,10 +12,9 @@ class ChromeBookmarks(object):
 		self.ids      = None
 		self.children = None
 
-
 	def get(self):
 		"""
-		Checks to see Bookmarks json file exists.. 
+		Gets expanded path to Chrome bookmarks json file.
 
 		Returns:
 			Expanded path to ~/Library/Application Support/Google/Chrome/Default/Bookmarks
