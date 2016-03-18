@@ -37,14 +37,17 @@ class ChromeBookmarks(object):
 	def add(self, title, url):
 		if title in self.titles:
 			return
+		next_id = max(self.ids) + 1
 		new_child = dict(
 			date_added=self.epoch,
-			id=str(max(self.ids) + 1),
+			id=str(next_id),
 			name=title,
 			type="url",
 			url=url,
 		)
 		self.children.append(new_child)
+		self.ids.append(next_id)
+		self.titles.append(title)
 
 	def remove(self, title):
 		for child in reversed(self.children):
