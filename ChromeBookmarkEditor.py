@@ -40,6 +40,11 @@ class ChromeBookmarks(object):
 		)
 		self.children.append(new_child)
 
+	def remove(self, title):
+		for child in reversed(self.children):
+			if child['name'] == title:
+				self.children.remove(child)
+
 
 
 
