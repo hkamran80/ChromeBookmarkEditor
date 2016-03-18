@@ -5,7 +5,7 @@ Example Usage:
 ```
 #!/usr/bin/python
 
-from ChromeBookmarkEditor import ChromeBookmarks # Import the module
+from ChromeBookmarkEditor import ChromeBookmarks          # Import the module
 
 bookmarks = ChromeBookmarks()                             # Create a Finder sidebar instance to act on.
 
