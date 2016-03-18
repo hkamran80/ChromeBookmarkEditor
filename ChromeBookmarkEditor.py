@@ -23,7 +23,7 @@ class ChromeBookmarks(object):
 
 		"""
 		path = os.path.expanduser('~/Library/Application Support/Google/Chrome/Default/Bookmarks')
-		if not os.path.isfile(plist_path):
+		if not os.path.isfile(path):
 			print "Bookmarks file doesn't appear to exist."
 			print "Generating new Bookmarks file."
 			self.generate(path)
