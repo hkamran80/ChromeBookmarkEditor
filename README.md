@@ -7,7 +7,7 @@ Example Usage:
 
 from ChromeBookmarkEditor import ChromeBookmarks          # Import the module
 
-bookmarks = ChromeBookmarks()                             # Create a Finder sidebar instance to act on.
+bookmarks = ChromeBookmarks()                             # Create a Chrome Bookmarks instance to act on.
 
 bookmarks.add("Reddit", "https://reddit.com")             # Add bookmark for Reddit
 bookmarks.add("Apple", "https://www.apple.com", index=0)  # Add bookmark for Apple at 0th position
