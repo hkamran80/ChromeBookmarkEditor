@@ -28,9 +28,10 @@ class ChromeBookmarks(object):
 	def read(self):
 		with open(self.path, "r") as infile:
 			js = json.load(infile)
-		self.json = js
+		self.json     = js
 		self.children = self.json['roots']['bookmark_bar']['children']
-		self.ids = [int(bm['id']) for bm in self.children]
+		self.ids      = [int(bm['id']) for bm in self.children]
+		self.titles   = 
 
 	def add(self, title, url):
 		new_child = dict(
@@ -45,6 +46,8 @@ class ChromeBookmarks(object):
 	def remove(self, title):
 		for child in reversed(self.children):
 			if child['name'] == title:
+				self.ids.remove(int(child['id']))
+				self.titles.remove(child['name'])
 				self.children.remove(child)
 
 	def write(self):
