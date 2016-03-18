@@ -60,6 +60,21 @@ class ChromeBookmarks(object):
 				self.titles.remove(child['name'])
 				self.children.remove(child)
 
+	def move(self, title, index):
+		if title not in self.titles:
+			return
+		if index > len(self.children) or index == -1:
+			index = len(self.children)
+		elif index < -1:
+			index = 0
+		for child in self.children:
+			if child['name'] == title:
+				to_mv = child
+				break
+		self.children.remove(to_mv)
+		self.children.insert(index, to_mv)
+
+
 	def swap(self, title1, title2):
 		if (title1 not in self.titles) or (title2 not in self.titles) or (title1 == title2):
 			return
