@@ -30,4 +30,17 @@ class ChromeBookmarks(object):
 		self.children = js['roots']['bookmark_bar']['children']
 		self.ids = [bm['id'] for bm in self.children]
 
+	def add(self, title, url):
+		new_child = dict(
+			date_added=self.epoch,
+			id=(max(self.ids) + 1),
+			name=title,
+			type="url",
+			url=url,
+		)
+		self.children.append(new_child)
+
+
+
+
 
