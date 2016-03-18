@@ -75,7 +75,10 @@ class ChromeBookmarks(object):
 			return
 		if index == -1 or index > len(self.children):
 			index = len(self.children)
-		next_id = max(self.ids) + 1
+		if not self.ids:
+			next_id = 1
+		else:
+			next_id = max(self.ids) + 1
 		new_child = dict(
 			date_added=self.epoch,
 			id=str(next_id),
