@@ -12,6 +12,7 @@ bookmarks = ChromeBookmarks()                             # Create a Finder side
 bookmarks.add("Reddit", "https://reddit.com")             # Add bookmark for Reddit
 bookmarks.add("Apple", "https://www.apple.com", index=0)  # Add bookmark for Apple at 0th position
 bookmarks.swap("Apple", "Reddit")                         # Swap positions of Apple and Reddit bookmarks
+bookmarks.move("Apple", 0)                                # Move Apple bookmark back to 0th position
 bookmarks.remove("Apple")                                 # Remove the Apple bookmark
 
 bookmarks.write()                                         # Write changes to Bookmarks file
