@@ -24,6 +24,10 @@ class ChromeBookmarks(object):
 		"""
 		return os.path.expanduser('~/Library/Application Support/Google/Chrome/Default/Bookmarks')
 
-
+	def read(self):
+		with open(self.path, "r") as infile:
+			js = json.load(infile)
+		self.children = js['bookmark_bar']['children']
+		self.ids = [bm['id'] for bm in self.children]
 
 
