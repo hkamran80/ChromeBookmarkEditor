@@ -34,7 +34,7 @@ class ChromeBookmarks(object):
 		self.ids      = [int(bm['id']) for bm in self.children]
 		self.titles   = [bm['name'] for bm in self.children]
 
-	def add(self, title, url):
+	def add(self, title, url, index=len(self.children)):
 		if title in self.titles:
 			return
 		next_id = max(self.ids) + 1
@@ -45,7 +45,7 @@ class ChromeBookmarks(object):
 			type="url",
 			url=url,
 		)
-		self.children.append(new_child)
+		self.children.insert(index, new_child)
 		self.ids.append(next_id)
 		self.titles.append(title)
 
@@ -61,17 +61,12 @@ class ChromeBookmarks(object):
 			return
 		for child in self.children:
 			if child['name'] == title1:
-				child1 = child
-			elif child['name'] == title2:
-				child2 = child
-		id1 = child1['id']
-		id2 = child2['id']
-		child1['id'] = id2
-		child2['id'] = id1
+				
 
 	def write(self):
 		bak_file = self.path + ".bak"
-		os.remove(bak_file)
+		if os.path.exists(bak_file):
+			os.remove(bak_file)
 		self.json.pop("checksum", None)
 		with open(self.path, "w") as outfile:
 			json.dump(self.json, outfile)
