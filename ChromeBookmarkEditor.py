@@ -75,6 +75,8 @@ class ChromeBookmarks(object):
 			return
 		if index == -1 or index > len(self.children):
 			index = len(self.children)
+		elif index < -1:
+			index = 0
 		if not self.ids:
 			next_id = 1
 		else:
