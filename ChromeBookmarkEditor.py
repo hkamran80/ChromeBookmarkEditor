@@ -27,7 +27,7 @@ class ChromeBookmarks(object):
 	def read(self):
 		with open(self.path, "r") as infile:
 			js = json.load(infile)
-		self.children = js['bookmark_bar']['children']
+		self.children = js['roots']['bookmark_bar']['children']
 		self.ids = [bm['id'] for bm in self.children]
 
 
