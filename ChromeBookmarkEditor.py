@@ -8,10 +8,10 @@ class ChromeBookmarks(object):
 	def __init__(self):
 		self.epoch    = "13078095537020784" # Haven't reverse engineered the epoch date_added is calculated from so this is hard coded for now
 		self.path     = self.get()
-		self.json     = None
-		self.ids      = None
-		self.titles   = None
-		self.children = None
+		self.json     = dict()
+		self.ids      = list()
+		self.titles   = list()
+		self.children = list()
 		self.read()
 
 	def get(self):
