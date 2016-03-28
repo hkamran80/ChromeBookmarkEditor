@@ -101,6 +101,11 @@ class ChromeBookmarks(object):
 				self.titles.remove(child['name'])
 				self.children.remove(child)
 
+	def removeAll(self):
+		self.ids      = list()
+		self.titles   = list()
+		self.children = list()
+
 	def move(self, title, index):
 		if title not in self.titles:
 			return
