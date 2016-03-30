@@ -139,5 +139,6 @@ class ChromeBookmarks(object):
 		if os.path.exists(bak_file):
 			os.remove(bak_file)
 		self.json.pop("checksum", None)
+		self.json['roots']['bookmark_bar']['children'] = self.children
 		with open(self.path, "w") as outfile:
 			json.dump(self.json, outfile)
