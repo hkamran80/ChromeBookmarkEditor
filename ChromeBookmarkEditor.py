@@ -14,8 +14,6 @@ class ChromeBookmarks(object):
 	def add(self, title, url, index=-1):
 		if title in self.titles:
 			return
-		if index == -1 or index > len(self.items):
-			index = len(self.items)
 		elif index < -1:
 			index = 0
 		if not self.ids:
@@ -27,7 +25,7 @@ class ChromeBookmarks(object):
 			URL=url
 		)
 		bm = self.chrome.classForScriptingClass_("bookmark item").alloc().initWithProperties_(properties)
-		if len(self.items) == 0:
+		if len(self.items) == 0 or index == -1 or index > len(self.items):
 			self.items.append(bm)
 		else:
 			self.items.insert(index, bm)
