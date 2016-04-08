@@ -14,7 +14,6 @@ class ChromeBookmarks(object):
 		self.chrome   = SBApplication.applicationWithBundleIdentifier_("com.google.Chrome")
 		self.bar      = self.chrome.bookmarksBar()
 		self.items    = self.bar.bookmarkItems()
-		self.ids      = [item.id() for item in self.items]
 		self.titles   = [item.title() for item in self.items]
 
 	def add(self, title, url, index=-1):
@@ -22,10 +21,6 @@ class ChromeBookmarks(object):
 			return
 		elif index < -1:
 			index = 0
-		if not self.ids:
-			next_id = 1
-		else:
-			next_id = max(self.ids) + 1
 		properties = dict(
 			title=title,
 			URL=url
@@ -35,7 +30,6 @@ class ChromeBookmarks(object):
 			self.items.append(bm)
 		else:
 			self.items.insert(index, bm)
-		self.ids.append(next_id)
 		self.titles.append(title)
 
 	def remove(self, title):
@@ -43,14 +37,12 @@ class ChromeBookmarks(object):
 			return
 		for index, item in enumerate(self.items):
 			if item.title() == title:
-				self.ids.remove(item.id())
 				self.titles.remove(item.title())
 				self.items.pop(index)
 				return
 
 	def removeAll(self):
 		self.items.removeAllObjects()
-		self.ids    = list()
 		self.titles = list()
 
 	def move(self, title, index):
