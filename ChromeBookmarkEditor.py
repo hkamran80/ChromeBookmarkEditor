@@ -45,7 +45,7 @@ class ChromeBookmarks(object):
 				return
 
 	def removeAll(self):
-		self.items,removeAllObjects()
+		self.items.removeAllObjects()
 		self.ids    = list()
 		self.titles = list()
 
