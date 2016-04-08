@@ -1,5 +1,11 @@
 #!/usr/bin/python
 
+# Hide python rocket ship from popping up in Dock when run.
+import AppKit
+info = AppKit.NSBundle.mainBundle().infoDictionary()
+info['CFBundleIconFile'] = u'PythonApplet.icns'
+info['LSUIElement'] = True
+
 from ScriptingBridge import SBApplication
 
 class ChromeBookmarks(object):
