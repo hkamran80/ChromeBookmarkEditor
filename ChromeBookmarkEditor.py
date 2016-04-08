@@ -37,9 +37,11 @@ class ChromeBookmarks(object):
 	def remove(self, title):
 		if title not in self.titles:
 			return
-		for item in reversed(self.items):
+		for index, item in enumerate(self.items):
 			if item.title() == title:
-				self.items.pop(item)
+				self.ids.remove(item.id())
+				self.titles.remove(item.title())
+				self.items.pop(index)
 				return
 
 	def removeAll(self):
