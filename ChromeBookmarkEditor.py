@@ -48,13 +48,19 @@ class ChromeBookmarks(object):
 	def move(self, title, index):
 		if title not in self.titles:
 			return
-		if index > len(self.items) or index == -1:
-			index = len(self.items)
 		elif index < -1:
 			index = 0
-		for item in self.items:
+		for i, item in enumerate(self.items):
 			if item.title() == title:
-				to_mv = item
+				url = item.URL()
 				break
-		self.items.remove(to_mv)
-		self.items.insert(index, to_mv)
+		self.items.pop(i)
+		properties = dict(
+			title=title,
+			URL=url
+		)
+		to_mv = self.chrome.classForScriptingClass_("bookmark item").alloc().initWithProperties_(properties)
+		if index > len(self.items) or index == -1:
+			self.items.append(to_mv)
+		else:
+			self.items.insert(index, to_mv)
