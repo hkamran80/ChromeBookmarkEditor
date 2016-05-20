@@ -82,7 +82,7 @@ class Chrome(SBAppId):
 class Folder(SBAppId):
 
 	def __init__(self, root):
-		super(Chrome, self).__init__()
+		super(Folder, self).__init__()
 		self.root    = root
 		self.folders = self.root.bookmarkFolders()
 		self.items   = self.root.bookmarkItems()
