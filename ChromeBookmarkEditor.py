@@ -8,6 +8,8 @@ info['LSUIElement'] = True
 
 from ScriptingBridge import SBApplication
 
+chrome   = SBApplication.applicationWithBundleIdentifier_("com.google.Chrome")
+
 class ChromeBookmarks(object):
 
 	def __init__(self):
@@ -65,14 +67,34 @@ class ChromeBookmarks(object):
 		else:
 			self.items.insert(index, to_mv)
 
-class Chrome(object):
-	pass
+class SBAppId(object):
 
-def Bar(Chrome):
-	pass
+	def __init__(self):
+		self.chrome  = SBApplication.applicationWithBundleIdentifier_("com.google.Chrome")
 
-def Folder(Chrome):
-	pass
+class Chrome(SBAppId):
 
-def Item(Chrome):
-	pass
+	def __init__(self):
+		super(Chrome, self).__init__()
+		self.bookmarksBar = Folder(self.chrome.bookmarksBar())
+		self.otherBookmarks = Folder(self.chrome.otherBookmarks())
+
+class Folder(SBAppId):
+
+	def __init__(self, root):
+		self.root    = root
+		self.folders = self.root.bookmarkFolders()
+		self.items   = self.root.bookmarkItems()
+
+	def getItemByTitle(self, title):
+		pass
+
+	def getItemByIndex(self, index):
+		pass
+
+	def addFolder(self, title):
+		pass
+
+	def addBookmark(self, title, url):
+		pass
+
