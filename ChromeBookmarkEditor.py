@@ -64,3 +64,15 @@ class ChromeBookmarks(object):
 			self.items.append(to_mv)
 		else:
 			self.items.insert(index, to_mv)
+
+class Chrome(object):
+	pass
+
+def Bar(Chrome):
+	pass
+
+def Folder(Chrome):
+	pass
+
+def Item(Chrome):
+	pass
