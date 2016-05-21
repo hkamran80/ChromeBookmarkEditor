@@ -109,7 +109,6 @@ class Folder(ChromeApp):
 		return None
 
 	def addFolder(self, title):
-		length = len(self.folders) + len(self.bookmarks)
 		properties = dict(
 			title=title
 		)
