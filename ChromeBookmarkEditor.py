@@ -116,5 +116,10 @@ class Folder(ChromeApp):
 		self.folders.append(new_folder)
 
 	def addBookmark(self, title, url):
-		pass
+		properties = dict(
+			title=title,
+			URL=url
+		)
+		new_bookmark = self.chrome.classForScriptingClass_("bookmark item").alloc().initWithProperties_(properties)
+		self.bookmarks.append(new_bookmark)
 
