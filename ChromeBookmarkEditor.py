@@ -89,13 +89,15 @@ class Folder(ChromeApp):
 
 	def getFolderByTitle(self, title):
 		for folder in self.folders:
-			print folder.title
 			if str(folder.title()) == title:
 				return folder
 		return None
 
 	def getBookmarkByTitle(self, title):
-		pass
+		for bookmark in self.bookmarks:
+			if str(bookmark.title()) == title:
+				return bookmark
+		return None
 
 	def getItemByIndex(self, index):
 		pass
