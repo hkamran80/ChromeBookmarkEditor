@@ -108,18 +108,13 @@ class Folder(ChromeApp):
 				return (bookmark, "Bookmark")
 		return None
 
-	def addFolder(self, title, index=-1):
+	def addFolder(self, title):
 		length = len(self.folders) + len(self.bookmarks)
 		properties = dict(
 			title=title
 		)
 		new_folder = self.chrome.classForScriptingClass_("bookmark folder").alloc().initWithProperties_(properties)
-		if index > length or length == 0:
-			self.folders.append(new_folder)
-		else:
-			if index < 0:
-				index = length - (abs(index) % length)
-			self.folders.insertObject_atIndex_(new_folder, index)
+		self.folders.append(new_folder)
 
 	def addBookmark(self, title, url):
 		pass
