@@ -87,13 +87,13 @@ class Folder(ChromeApp):
 		self.folders = self.root.bookmarkFolders()
 		self.bookmarks   = self.root.bookmarkItems()
 
-	def getFolderByTitle(self, title):
+	def getFolder(self, title):
 		for folder in self.folders:
 			if str(folder.title()) == title:
 				return folder
 		return None
 
-	def getBookmarkByTitle(self, title):
+	def getBookmark(self, title):
 		for bookmark in self.bookmarks:
 			if str(bookmark.title()) == title:
 				return bookmark
@@ -122,4 +122,10 @@ class Folder(ChromeApp):
 		)
 		new_bookmark = self.chrome.classForScriptingClass_("bookmark item").alloc().initWithProperties_(properties)
 		self.bookmarks.append(new_bookmark)
+
+	def removeFolder(self, title):
+		pass
+
+	def removeBookmark(self, title):
+		pass
 
