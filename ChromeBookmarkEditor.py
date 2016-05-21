@@ -67,19 +67,19 @@ class ChromeBookmarks(object):
 		else:
 			self.items.insert(index, to_mv)
 
-class SBAppId(object):
+class ChromeApp(object):
 
 	def __init__(self):
 		self.chrome  = SBApplication.applicationWithBundleIdentifier_("com.google.Chrome")
 
-class Chrome(SBAppId):
+class Chrome(ChromeApp):
 
 	def __init__(self):
 		super(Chrome, self).__init__()
 		self.bookmarksBar = Folder(self.chrome.bookmarksBar())
 		self.otherBookmarks = Folder(self.chrome.otherBookmarks())
 
-class Folder(SBAppId):
+class Folder(ChromeApp):
 
 	def __init__(self, root):
 		super(Folder, self).__init__()
@@ -87,8 +87,17 @@ class Folder(SBAppId):
 		self.folders = self.root.bookmarkFolders()
 		self.items   = self.root.bookmarkItems()
 
-	def getItemByTitle(self, title):
-		pass
+	def getItemByTitle(self, title, item_type="Bookmark"):
+		if item_type == "Bookmark":
+			target = self.items
+		elif item_type == "Folder":
+			target = self.folders
+		for item in target:
+			print item.title
+			if str(item.title()) == title:
+				return item
+		return None
+
 
 	def getItemByIndex(self, index):
 		pass
