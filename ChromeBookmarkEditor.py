@@ -119,7 +119,7 @@ class Folder(ChromeApp):
 		else:
 			if index < 0:
 				index = length - (abs(index) % length)
-			insertObject_atIndex_(new_folder, index)
+			self.folders.insertObject_atIndex_(new_folder, index)
 
 	def addBookmark(self, title, url):
 		pass
