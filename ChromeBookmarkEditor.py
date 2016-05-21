@@ -85,19 +85,17 @@ class Folder(ChromeApp):
 		super(Folder, self).__init__()
 		self.root    = root
 		self.folders = self.root.bookmarkFolders()
-		self.items   = self.root.bookmarkItems()
+		self.bookmarks   = self.root.bookmarkItems()
 
-	def getItemByTitle(self, title, item_type="Bookmark"):
-		if item_type == "Bookmark":
-			target = self.items
-		elif item_type == "Folder":
-			target = self.folders
-		for item in target:
-			print item.title
-			if str(item.title()) == title:
-				return item
+	def getFolderByTitle(self, title):
+		for folder in self.folders:
+			print folder.title
+			if str(folder.title()) == title:
+				return folder
 		return None
 
+	def getBookmarkByTitle(self, title):
+		pass
 
 	def getItemByIndex(self, index):
 		pass
