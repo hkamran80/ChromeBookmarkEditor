@@ -1,6 +1,8 @@
 # ChromeBookmarkEditor
 Python module for easily adding, removing, and moving bookmarks on the Chrome bookmark menu in the context of the logged in user.
 
+Currently working on adding support for adding folders / subfolders. Most of the implementation is there but haven't had time to finish. Pull requests are welcome.
+
 Example Usage:
 ```
 #!/usr/bin/python
