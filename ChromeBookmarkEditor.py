@@ -103,15 +103,6 @@ class Folder(ChromeApp):
 				return bookmark
 		return None
 
-	def getItemByIndex(self, index):
-		for folder in self.folders:
-			if int(folder.index()) == index:
-				return (folder, "Folder")
-		for bookmark in self.bookmarks:
-			if int(bookmark.index()) == index:
-				return (bookmark, "Bookmark")
-		return None
-
 	def addFolder(self, title):
 		properties = dict(
 			title=title
