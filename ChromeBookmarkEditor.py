@@ -90,7 +90,7 @@ class Folder(ChromeApp):
 	def getFolder(self, title):
 		for folder in self.folders:
 			if str(folder.title()) == title:
-				return folder
+				return Folder(folder)
 		return None
 
 	def getBookmark(self, title):
