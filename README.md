@@ -17,8 +17,10 @@ other_bookmarks.addFolder("Fav Links")                                          
 
 some_bookmark   = bookmarks_bar.getBookmark("Google")                             # Get reference to bookmark
 some_folder     = other_bookmarks.getFolder("Fav Links")                          # Get reference to folder
-nested_folder   = some_folder.addFolder("Subreddits")                             # Add nested folder titled "Subreddits" to "Fav Links" folder
-nested_bookmark = nested_folder.addBookmark("news", "https://reddit.com/r/news/") # Add bookmark to nested folder
+some_folder.addFolder("Subreddits")                                               # Add nested folder titled "Subreddits" to "Fav Links" folder
+nested_folder   = some_folder.getFolder("Subreddits")                             # Get reference to nested folder
+nested_folder.addBookmark("news", "https://reddit.com/r/news/")                   # Add bookmark to nested folder
+nested_bookmark = nested_folder.getBookmark("news")
 
 some_bookmark.title()                                                             # Get title of bookmark
 >>> u'Google'
