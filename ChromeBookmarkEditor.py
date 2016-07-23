@@ -127,12 +127,6 @@ class Folder(ChromeApp):
 		new_bookmark = self.chrome.classForScriptingClass_("bookmark item").alloc().initWithProperties_(properties)
 		self.bookmarks.append(new_bookmark)
 
-	def removeFolder(self, title):
-		self.getFolder(title).root.delete()
-
-	def removeBookmark(self, title):
-		self.getBookmark(title).delete()
-
 	def removeAll(self):
 		for item in (self.folders + self.bookmarks):
 			item.delete()
