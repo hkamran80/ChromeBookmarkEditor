@@ -96,7 +96,7 @@ class Folder(ChromeApp):
 	def getBookmark(self, title):
 		for bookmark in self.bookmarks:
 			if str(bookmark.title()) == title:
-				return bookmark
+				return Bookmark(bookmark)
 		return None
 
 	def getItemByIndex(self, index):
@@ -128,4 +128,16 @@ class Folder(ChromeApp):
 
 	def removeBookmark(self, title):
 		pass
+
+class Bookmark(ChromeApp):
+
+	def __init__(self, source):
+		super(Bookmark, self).__init__()
+		self.title = self.title()
+		self.url   = self.URL()
+
+
+
+
+
 
