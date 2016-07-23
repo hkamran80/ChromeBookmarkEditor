@@ -76,16 +76,20 @@ class Chrome(ChromeApp):
 
 	def __init__(self):
 		super(Chrome, self).__init__()
-		self.bookmarksBar = Folder(self.chrome.bookmarksBar())
+		self.bookmarksBar   = Folder(self.chrome.bookmarksBar())
 		self.otherBookmarks = Folder(self.chrome.otherBookmarks())
 
 class Folder(ChromeApp):
 
 	def __init__(self, root):
 		super(Folder, self).__init__()
-		self.root    = root
-		self.folders = self.root.bookmarkFolders()
-		self.bookmarks   = self.root.bookmarkItems()
+		self.root      = root
+		self.folders   = self.root.bookmarkFolders()
+		self.bookmarks = self.root.bookmarkItems()
+
+	def setTitle_(self, title):
+		self.root.setTitle_(title)
+		self.title = title
 
 	def getFolder(self, title):
 		for folder in self.folders:
@@ -124,14 +128,15 @@ class Folder(ChromeApp):
 		self.bookmarks.append(new_bookmark)
 
 	def removeFolder(self, title):
-		self.getFolder(title).delete()
+		self.getFolder(title).root.delete()
 
 	def removeBookmark(self, title):
 		self.getBookmark(title).delete()
 
 	def removeAll(self):
-		for item in (folders + bookmarks):
+		for item in (self.folders + self.bookmarks):
 			item.delete()
+
 
 
 
