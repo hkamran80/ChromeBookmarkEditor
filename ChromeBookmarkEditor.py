@@ -129,14 +129,6 @@ class Folder(ChromeApp):
 	def removeBookmark(self, title):
 		pass
 
-class Bookmark(ChromeApp):
-
-	def __init__(self, source):
-		super(Bookmark, self).__init__()
-		self.title = self.title()
-		self.url   = self.URL()
-
-
 
 
 
