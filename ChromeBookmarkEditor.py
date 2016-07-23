@@ -129,6 +129,10 @@ class Folder(ChromeApp):
 	def removeBookmark(self, title):
 		self.getBookmark(title).delete()
 
+	def removeAll(self):
+		for item in (folders + bookmarks):
+			item.delete()
+
 
 
 
